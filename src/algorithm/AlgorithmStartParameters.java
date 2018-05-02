@@ -22,11 +22,11 @@ public class AlgorithmStartParameters {
     public Selection selection;
     public Refresh refresh;
 
-    public int populationSize = 100; //начальный размер популяции
+    public int populationSize = 20; //начальный размер популяции
     public int mutationChance = 20; //шанс на мутацию в процентах
     public int crossingCoefficient = 50; // процент участвующих в передаче информации наследникам
 
-    public int iterationQuantity = 1000;
+    public int iterationQuantity = 10000;
 
     public boolean deleteTheSame = true;
 

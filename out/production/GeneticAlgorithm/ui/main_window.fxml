@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<VBox fx:controller="ui.MainWindowController" xmlns:fx="http://javafx.com/fxml" style="-fx-padding: 20 20 20 20; -fx-background-color: gray">
+        <Pane minWidth="800" minHeight="400" maxWidth="800" maxHeight="400" fx:id="graphicWindow" style="-fx-background-color: cadetblue; -fx-border-width: 2; -fx-border-color: black"/>
+            <VBox minWidth="800" minHeight="100" maxWidth="800" maxHeight="100">
+                <HBox style="-fx-alignment: bottom-left">
+                    <Button text="Random" onAction="#onRandomButton"/>
+                    <TextField fx:id="randomQuantity"/>
+                </HBox>
+                <HBox style="-fx-alignment: bottom-right">
+                    <Button text="Start" fx:id="startButton" onAction="#onStartButton"/>
+                    <Button text="Stop" fx:id="stopButton" onAction="#onStopButton" disable="true"/>
+                </HBox>
+                <HBox style="-fx-alignment: bottom-center">
+                    <Button text="Clear All" onAction="#onClearAllButton"/>
+                    <Button text="Clear Lines" onAction="#onClearLinesButton"/>
+                </HBox >
+                <!--<Button text="Settings" on onAction="#onSettingsButton" style="-fx-alignment: bottom-right"/>-->
+            </VBox>
+</VBox>
