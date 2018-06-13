@@ -6,13 +6,13 @@ import algorithm.Population;
 import java.util.List;
 
 /**
- * Удаляет сначала те, которые помечены, потом "худших" из популяции, сохраняя определённый размер популяции
+ * Removes first those that are marked, then the "worst" of the population,
+ * keeping a certain size of the population
  */
-public class RefreshKeepBest  implements Refresh{
+public class RefreshKeepBest implements Refresh {
     private int populationSize;
 
-    public RefreshKeepBest(int populationSize)
-    {
+    public RefreshKeepBest(int populationSize) {
         this.populationSize = populationSize;
     }
 
@@ -21,7 +21,7 @@ public class RefreshKeepBest  implements Refresh{
         List<Phenotype> list = population.getAll();
 
         int i = 0;
-        while(list.size() > populationSize && i < list.size())//удаляем невыживших
+        while (list.size() > populationSize && i < list.size()) // remove non-survivors
         {
             if (!list.get(i).isAlive())
                 list.remove(i);
@@ -29,8 +29,7 @@ public class RefreshKeepBest  implements Refresh{
                 i++;
         }
 
-        while(list.size() > populationSize)
-        {
+        while (list.size() > populationSize) {
             list.remove(list.size() - 1);
         }
         return population;

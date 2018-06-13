@@ -3,8 +3,8 @@ package algorithm;
 import java.util.*;
 
 /**
- * Один организм — одно возможное решение задачи
- * Совокупность всех точек-городов в определённой последовательности
+ * One organism (phenotype) is one possible solution of the problem
+ * The totality of all points-cities in a certain sequence
  */
 public class Phenotype {
     private List<City> phenotype;
@@ -12,37 +12,33 @@ public class Phenotype {
     private boolean isAlive = true;
     private double fitness;
 
-    public static final Comparator<Phenotype> comparator = (x, y) -> Double.compare(x.fitness, y.fitness) ;
+    public static final Comparator<Phenotype> comparator = (x, y) -> Double.compare(x.fitness, y.fitness);
 
-    public Phenotype(Roads roads)
-    {
+    public Phenotype(Roads roads) {
         this.roads = roads;
         phenotype = new ArrayList<>(roads.getQuantity());
 
         Random random = RandomNumber.random;
         List<City> cities = new LinkedList<>(Arrays.asList(roads.getCities()));
-        while(!cities.isEmpty()) {
-            phenotype.add(Math.abs(phenotype.size() == 0? 0 : random.nextInt()%phenotype.size()),cities.remove(Math.abs(random.nextInt()%cities.size())));
+        while (!cities.isEmpty()) {
+            phenotype.add(Math.abs(phenotype.size() == 0 ? 0 : random.nextInt() % phenotype.size()), cities.remove(Math.abs(random.nextInt() % cities.size())));
         }
         recountFitness();
     }
 
-    public Phenotype(Phenotype phenotype)
-    {
+    public Phenotype(Phenotype phenotype) {
         Collections.copy(phenotype.getList(), this.phenotype);
         this.roads = phenotype.getRoads();
         recountFitness();
     }
 
-    public Phenotype(Roads roads, List<City> phenotype)
-    {
+    public Phenotype(Roads roads, List<City> phenotype) {
         this.roads = roads;
         this.phenotype = phenotype;
         recountFitness();
     }
 
-    private void recountFitness()
-    {
+    private void recountFitness() {
         double fitness = 0;
 
         if (phenotype.size() > 0)
@@ -52,8 +48,7 @@ public class Phenotype {
         this.fitness = fitness;
     }
 
-    public double getFitness()
-    {
+    public double getFitness() {
         return fitness;
     }
 
@@ -65,8 +60,7 @@ public class Phenotype {
         return isAlive;
     }
 
-    public void setAlive(boolean isAlive)
-    {
+    public void setAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
 

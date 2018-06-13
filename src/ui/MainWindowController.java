@@ -21,9 +21,14 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Контроллер для основного окна
+ * Controller for Main Window
  */
 public class MainWindowController {
+    public static final String WRONG_DOTS_NUMBER_TITLE = "Number entered incorrectly";
+    public static final String WRONG_DOTS_NUMBER_HEADER = "Invalid input";
+    public static final String WRONG_DOTS_NUMBER_CONTENT = "Can not create %s dots";
+
+
     @FXML
     private Pane graphicWindow;
 
@@ -40,15 +45,11 @@ public class MainWindowController {
     private List<Circle> dots = new LinkedList<>();
 
 
-
-
-
     public MainWindowController() {
     }
 
     @FXML
-    public void initialize()
-    {
+    public void initialize() {
         graphicWindow.setOnMouseClicked(event ->
         {
             addNewDot(event.getX(), event.getY());
@@ -57,41 +58,35 @@ public class MainWindowController {
     }
 
 
-    private void addNewDot(double x, double y)
-    {
-        Circle circle = new Circle(x, y, 2);//x, y, radius точки
+    private void addNewDot(double x, double y) {
+        Circle circle = new Circle(x, y, 2); // x, y and radius of the dot
         dots.add(circle);
         graphicWindow.getChildren().add(circle);
     }
 
-    private void addLine(double x1, double y1, double x2, double y2)
-    {
+    private void addLine(double x1, double y1, double x2, double y2) {
         graphicWindow.getChildren().add(new Line(x1, y1, x2, y2));
     }
 
     @FXML
-    public void onRandomButton()
-    {
+    public void onRandomButton() {
         Random random = RandomNumber.random;
         onClearAllButton();
         try {
             for (int i = 0; i < Integer.parseInt(randomQuantity.getText()); i++) {
                 addNewDot(random.nextDouble() * graphicWindow.getWidth(), random.nextDouble() * graphicWindow.getHeight());
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Число введено неверно");
-            alert.setHeaderText("Неверно введены данные");
-            alert.setContentText("Невозможно создать " + randomQuantity.getText() + " точек");
+            alert.setTitle(WRONG_DOTS_NUMBER_TITLE);
+            alert.setHeaderText(WRONG_DOTS_NUMBER_HEADER);
+            alert.setContentText(String.format(WRONG_DOTS_NUMBER_CONTENT, randomQuantity.getText()));
             alert.show();
         }
     }
 
     @FXML
-    public void onStartButton()
-    {
+    public void onStartButton() {
         onClearLinesButton();
         algorithm = new GeneticAlgorithm(createRoads(), algorithmStartParameters);
         stopButton.setDisable(false);
@@ -115,21 +110,18 @@ public class MainWindowController {
     }
 
     @FXML
-    public void onClearAllButton()
-    {
+    public void onClearAllButton() {
         graphicWindow.getChildren().clear();
         dots.clear();
     }
 
 
     @FXML
-    public void onClearLinesButton()
-    {
+    public void onClearLinesButton() {
         ObservableList<Node> list = graphicWindow.getChildren();
         int i = 0;
-        while(list.size() > i)
-        {
-            if(list.get(i) instanceof Line)
+        while (list.size() > i) {
+            if (list.get(i) instanceof Line)
                 list.remove(i);
             else
                 i++;
@@ -137,22 +129,18 @@ public class MainWindowController {
     }
 
     @FXML
-    public void onStopButton()
-    {
+    public void onStopButton() {
         algorithm.stop();
     }
 
     @FXML
-    public void onSettingsButton()
-    {
+    public void onSettingsButton() {
 
     }
 
-    private Roads createRoads()
-    {
+    private Roads createRoads() {
         City[] cities = new City[dots.size()];
-        for (int i = 0; i < cities.length ; i++)
-        {
+        for (int i = 0; i < cities.length; i++) {
             cities[i] = new City(dots.get(i).getCenterX(), dots.get(i).getCenterY());
         }
         Roads roads = new Roads(cities, new WeightByDistance());

@@ -3,7 +3,7 @@ package algorithm.refresh;
 import algorithm.Population;
 
 /**
- * Удаляет только по достижению верхней гранцы, потом проводится refresh по оставшимся
+ * Deletes only when the upper bound is reached, then refresh is performed on the remaining
  */
 public class RefreshWithoutDelete implements Refresh{
     private int upperBound;

@@ -3,7 +3,7 @@ package algorithm.weight.function;
 import algorithm.City;
 
 /**
- * Определяем вес по расстоянию
+ * Determine weight by distance
  */
 public class WeightByDistance implements WeightFunction {
     @Override

@@ -4,7 +4,7 @@ import algorithm.Population;
 import algorithm.crossing.Crossing;
 
 /**
- * Способ выбора из популяции для последующего скрещевания
+ * Method of selection from the population for the subsequent crossing
  */
 public interface Selection {
     Population selection(Population population, Crossing crossing);

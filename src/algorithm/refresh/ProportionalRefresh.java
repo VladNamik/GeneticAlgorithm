@@ -8,7 +8,8 @@ import algorithm.RandomNumber;
 import java.util.List;
 
 /**
- * Удаляет сначала те, что помечены, потом с определённой вероятностью удаляет те, что остались
+ * Removes first those that are marked,
+ * then with a certain probability removes those that are left.
  */
 public class ProportionalRefresh implements Refresh{
     private int populationSize;
@@ -23,7 +24,7 @@ public class ProportionalRefresh implements Refresh{
         List<Phenotype> list = population.getAll();
 
         int i = 0;
-        while(list.size() > populationSize && i < list.size())//удаляем невыживших
+        while(list.size() > populationSize && i < list.size()) // remove non-survivors
         {
             if (!list.get(i).isAlive())
                 list.remove(i);
@@ -44,7 +45,8 @@ public class ProportionalRefresh implements Refresh{
         return population;
     }
 
-    private double[] getProbabiltyArray(List<Phenotype> list) //массив вероятности удаления объекта
+    // array of object selection probabilities
+    private double[] getProbabiltyArray(List<Phenotype> list)
     {
         double[] probabilityArray = new double[list.size()];
         double sum = 0;

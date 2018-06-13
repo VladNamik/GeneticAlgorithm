@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Основное окно, выбор алгоритма, параметров
+ * Program entry point
  */
 public class MainWindow extends Application {
     private static Stage primaryStage;

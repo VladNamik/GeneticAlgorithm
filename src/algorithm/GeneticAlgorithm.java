@@ -8,28 +8,28 @@ import algorithm.selection.Selection;
 import java.util.List;
 
 /**
- * Реализация генетического алгоритма
+ * Implementation of genetic algorithm
  */
 public class GeneticAlgorithm {
 
-    //данные
+    // algoritm parameters
     private Roads roads;
     private Population currentPopulation;
-    double maxWeight = 0;
-    int iterationQuantity = 200;
-    int mutationChance = 20;
-    boolean deleteTheSame;
+    private double maxWeight = 0;
+    private int iterationQuantity = 200;
+    private int mutationChance = 20;
+    private boolean deleteTheSame;
 
 
-    //реализации конкретных функций алгоритма
+    // implementation of specific functions used in GA
     private Crossing crossing;
     private Mutation mutation;
     private Selection selection;
     private Refresh refresh;
 
 
-    //процеcc выполнения
-    private double resultStatus = 0;//процент выполнения задачи
+    // execution process
+    private double resultStatus = 0; // percentage of completed task
     private boolean isStopped = false;
 
 
@@ -52,18 +52,18 @@ public class GeneticAlgorithm {
 
     public void run()
     {
-        int i=0;//номер поколения
+        int i=0; // generation number
 
         while(currentPopulation.getBest().getFitness() > maxWeight && !isStopped && i < iterationQuantity)
         {
 
 
-            //производим выборку и скрещевание
+            // select and cross
             this.currentPopulation = selection.selection(currentPopulation, crossing);
 
 
 
-            //мутация
+            // mutation
             if (getStartMutation(i)) {
                 List<Phenotype> phenotypeList = currentPopulation.getAll();
                 for (int j = 1; j < phenotypeList.size(); j++)
@@ -74,7 +74,7 @@ public class GeneticAlgorithm {
 
 
 
-            //помечаем одинаковые, если они есть
+            // mark the same if they exist
             if (deleteTheSame)
             {
                 double[] fitness = new double[1];
@@ -87,7 +87,7 @@ public class GeneticAlgorithm {
                 });
             }
 
-            //очищение популяции от лишних особей
+            // purification of the population from extra individuals
             this.currentPopulation = refresh.refresh(currentPopulation);
 
 

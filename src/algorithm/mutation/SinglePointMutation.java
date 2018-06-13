@@ -7,9 +7,9 @@ import algorithm.RandomNumber;
 import java.util.List;
 
 /**
- * Меняются местами два гена
+ * Swap two genes
  */
-public class SinglePointMutation implements Mutation{
+public class SinglePointMutation implements Mutation {
     @Override
     public Phenotype mutation(Phenotype phenotype) {
         List<City> genes = phenotype.getList();
@@ -17,8 +17,7 @@ public class SinglePointMutation implements Mutation{
         return phenotype;
     }
 
-    public void swap(List<City> list, int i, int j)
-    {
+    public void swap(List<City> list, int i, int j) {
         City city = list.get(i);
         City city2 = list.get(j);
 

@@ -6,7 +6,7 @@ import algorithm.RandomNumber;
 import java.util.Random;
 
 /**
- * Определяем вес рандомно
+ * Determine weight randomly
  */
 public class WeightByRandom implements WeightFunction{
     @Override

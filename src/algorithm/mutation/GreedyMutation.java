@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * "Жадная мутация"
+ * "Greedy Mutation"
  */
 public class GreedyMutation implements Mutation {
     @Override
@@ -19,14 +19,13 @@ public class GreedyMutation implements Mutation {
             return phenotype;
 
         int firstPoint = 1 + Math.abs(RandomNumber.random.nextInt() % (phenotypeList.size() - 4));
-        int secondPoint = firstPoint + 2 + Math.abs(RandomNumber.random.nextInt() % (phenotypeList.size() - firstPoint - 3 ));
+        int secondPoint = firstPoint + 2 + Math.abs(RandomNumber.random.nextInt() % (phenotypeList.size() - firstPoint - 3));
 
         List<City> intermediateList = new ArrayList<>(secondPoint - firstPoint);
-        for (int i = firstPoint; i < secondPoint; i++ )
+        for (int i = firstPoint; i < secondPoint; i++)
             intermediateList.add(phenotypeList.get(i));
         int k = secondPoint - 1;
-        while(k >= firstPoint)
-        {
+        while (k >= firstPoint) {
             phenotypeList.remove(k);
             k--;
         }
@@ -35,8 +34,7 @@ public class GreedyMutation implements Mutation {
         final Roads roads = phenotype.getRoads();
         City lastCity = phenotypeList.get(firstPoint - 1);
         int currentAddToListPoint = firstPoint;
-        while(intermediateList.size() > 0)
-        {
+        while (intermediateList.size() > 0) {
             k = 0;
             for (int i = 1; i < intermediateList.size(); i++)
                 if (roads.getWeight(lastCity, intermediateList.get(k)) > roads.getWeight(lastCity, intermediateList.get(i)))

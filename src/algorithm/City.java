@@ -1,8 +1,8 @@
 package algorithm;
 
 /**
- * Наименьшая функциональная единица
- * Точка с координатами
+ * The smallest functional unit
+ * Dot with coordinates
  */
 public class City {
     private double x;
@@ -15,8 +15,7 @@ public class City {
         this.id = id;
     }
 
-    public City(double x, double y)
-    {
+    public City(double x, double y) {
         this.x = x;
         this.y = y;
     }

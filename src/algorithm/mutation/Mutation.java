@@ -3,8 +3,7 @@ package algorithm.mutation;
 import algorithm.Phenotype;
 
 /**
- * Способ мутации
- * Выбирается один из фенотипа и
+ * Method of mutation
  */
 public interface Mutation {
     Phenotype mutation(Phenotype phenotype);

@@ -4,16 +4,15 @@ import algorithm.Phenotype;
 import algorithm.RandomNumber;
 
 /**
- * Модифицированная жадная мутация
- * С заданной вероятностью меняет местами первый/последний с тем, что в середине
+ * Modified greedy mutation
+ * With a given probability swaps the first/last with that in the middle
  */
-public class ModifiedGreedyMutation implements Mutation{
+public class ModifiedGreedyMutation implements Mutation {
     private SinglePointMutation singlePointMutation;
     private GreedyMutation greedyMutation;
     private double swapProbability;
 
-    public ModifiedGreedyMutation(double swapProbability)
-    {
+    public ModifiedGreedyMutation(double swapProbability) {
         singlePointMutation = new SinglePointMutation();
         greedyMutation = new GreedyMutation();
         this.swapProbability = swapProbability;

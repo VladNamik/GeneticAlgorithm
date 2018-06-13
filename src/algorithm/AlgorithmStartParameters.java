@@ -13,18 +13,18 @@ import algorithm.selection.Selection;
 import algorithm.selection.TruncationSelection;
 
 /**
- * Параметры запуска алгоритма
+ * Algorithm start parameters
  */
 public class AlgorithmStartParameters {
-    //функции
+    // functions
     public Crossing crossing;
     public Mutation mutation;
     public Selection selection;
     public Refresh refresh;
 
-    public int populationSize = 20; //начальный размер популяции
-    public int mutationChance = 20; //шанс на мутацию в процентах
-    public int crossingCoefficient = 50; // процент участвующих в передаче информации наследникам
+    public int populationSize = 20; // initial size of population
+    public int mutationChance = 20; // chance of mutation (in percents)
+    public int crossingCoefficient = 50; // percentage of those participating in the transfer of information to the heirs
 
     public int iterationQuantity = 10000;
 
