@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * Proportional selection
- * Better unit means more chances to be selected
+ * Better unit has more chances to be selected
  */
 public class ProportionalSelection implements Selection {
     private int childrenCoefficient; // the percentage of children who will appear on the number of parents
